@@ -16,7 +16,8 @@
 ```js
 const config = {
   app: {
-    prop: 'foo'
+    prop: 'foo',
+    camelCase: 'bar',
   },
   bar: 'baz'
 }
@@ -24,6 +25,7 @@ rc2env(config)
 //=>
 {
   APP_PROP: 'foo',
+  APP_CAMEL_CASE: 'bar',
   BAR: 'baz'
 }
 ```

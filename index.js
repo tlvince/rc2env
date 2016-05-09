@@ -1,5 +1,7 @@
 'use strict'
 
+const snakeCase = require('snake-case')
+
 module.exports = (config) => {
   const omit = (object, keys) => (
     Object.keys(object).reduce((i, key) => {
@@ -12,7 +14,7 @@ module.exports = (config) => {
 
   const reduce = (object, prefix) => {
     const toEnv = (index, prop) => {
-      let key = prop.toUpperCase()
+      let key = snakeCase(prop).toUpperCase()
       if (prefix) {
         key = prefix + '_' + key
       }

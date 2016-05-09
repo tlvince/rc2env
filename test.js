@@ -40,3 +40,18 @@ test('omits rc metadata', t => {
   t.same(rc2env(mock), expected)
   t.end()
 })
+
+test('converts keys to UPPER_SNAKE_CASE', t => {
+  const mock = {
+    foo: 'foo',
+    barBar: 'bar',
+    'baz-baz': 'baz'
+  }
+  const expected = {
+    FOO: 'foo',
+    BAR_BAR: 'bar',
+    BAZ_BAZ: 'baz'
+  }
+  t.same(rc2env(mock), expected)
+  t.end()
+})
