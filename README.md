@@ -38,7 +38,7 @@ npm install --save rc2env
 
 ## Usage
 
-`rc2env(<object>, [string])`
+`rc2env(<object>[, string])`
 
 This is meant to be used with [rc][], so:
 
