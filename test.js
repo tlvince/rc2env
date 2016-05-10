@@ -70,3 +70,16 @@ test('optionally outputs in rc nested form', t => {
   t.same(rc2env(mock, 'app'), expected)
   t.end()
 })
+
+test('should preserve case in rc nested form', t => {
+  const mock = {
+    foo: {
+      barBaz: 'foo'
+    }
+  }
+  const expected = {
+    app_foo__barBaz: 'foo'
+  }
+  t.same(rc2env(mock, 'app'), expected)
+  t.end()
+})

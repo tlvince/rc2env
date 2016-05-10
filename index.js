@@ -14,7 +14,7 @@ module.exports = (config, name) => {
 
   const reduce = (object, prefix) => {
     const toEnv = (index, prop) => {
-      let key = snakeCase(prop)
+      let key = prop
       if (name && !prefix) {
         key = name + '_' + key
       } else if (prefix && !name) {
@@ -23,7 +23,7 @@ module.exports = (config, name) => {
         key = prefix + '__' + key
       }
       if (!name) {
-        key = key.toUpperCase()
+        key = snakeCase(key).toUpperCase()
       }
 
       const value = object[prop]

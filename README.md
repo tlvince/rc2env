@@ -68,14 +68,16 @@ Optionally, pass in a string (`appname`) to form rc-like nested env properties:
 const config = {
   foo: 'foo',
   bar: {
-    baz: 'baz'
+    baz: 'baz',
+    preserveCase: 'yes'
   }
 }
 const envConfig = rc2env(config, 'app')
 //=>
 {
   app_foo: 'foo',
-  app_bar__baz: 'baz'
+  app_bar__baz: 'baz',
+  app_bar__preserveCase: 'yes'
 }
 ```
 
