@@ -38,6 +38,8 @@ npm install --save rc2env
 
 ## Usage
 
+`rc2env(<object>, [string])`
+
 This is meant to be used with [rc][], so:
 
 ```js
@@ -57,6 +59,23 @@ const envConfig = rc2env(config)
 {
   APP_PROP: 'foo',
   BAR: 'baz'
+}
+```
+
+Optionally, pass in a string (`appname`) to form rc-like nested env properties:
+
+```js
+const config = {
+  foo: 'foo',
+  bar: {
+    baz: 'baz'
+  }
+}
+const envConfig = rc2env(config, 'app')
+//=>
+{
+  app_foo: 'foo',
+  app_bar__baz: 'baz'
 }
 ```
 

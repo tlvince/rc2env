@@ -2,7 +2,7 @@
 
 const snakeCase = require('snake-case')
 
-module.exports = (config) => {
+module.exports = (config, name) => {
   const omit = (object, keys) => (
     Object.keys(object).reduce((i, key) => {
       if (keys.indexOf(key) === -1) {
@@ -14,10 +14,18 @@ module.exports = (config) => {
 
   const reduce = (object, prefix) => {
     const toEnv = (index, prop) => {
-      let key = snakeCase(prop).toUpperCase()
-      if (prefix) {
+      let key = snakeCase(prop)
+      if (name && !prefix) {
+        key = name + '_' + key
+      } else if (prefix && !name) {
         key = prefix + '_' + key
+      } else if (prefix) {
+        key = prefix + '__' + key
       }
+      if (!name) {
+        key = key.toUpperCase()
+      }
+
       const value = object[prop]
 
       if (typeof value === 'object') {

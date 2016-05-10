@@ -55,3 +55,18 @@ test('converts keys to UPPER_SNAKE_CASE', t => {
   t.same(rc2env(mock), expected)
   t.end()
 })
+
+test('optionally outputs in rc nested form', t => {
+  const mock = {
+    foo: 'foo',
+    bar: {
+      baz: 'baz'
+    }
+  }
+  const expected = {
+    app_foo: 'foo',
+    app_bar__baz: 'baz'
+  }
+  t.same(rc2env(mock, 'app'), expected)
+  t.end()
+})
